@@ -1,0 +1,11 @@
+function out = car(in)
+% Input: linear velocity, angle rate [v_x; psi']
+% Output: velocities in the global frame [x'; y'; theta'] and psi'
+    th =in(3) ;
+    psi = in(4) ;
+    u =[in(5);in(6)] ;
+    
+    global l
+    dq =[0 cos(th); 0 sin(th); 0 (1/l)*tan(psi);1 0]*u ;
+    out = [dq(1) dq(2) dq(3) dq(4)];
+return;
